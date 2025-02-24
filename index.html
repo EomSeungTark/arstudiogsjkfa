@@ -6,8 +6,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
         <script>
             // degToRad 수동 정의 (필요시)
             if (typeof THREE === 'undefined') {
@@ -20,6 +21,22 @@
                 };
                 console.log("degToRad manually defined");
             }
+
+            // GPS 권한 요청
+            window.onload = () => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            console.log("GPS 위치 허용됨:", position.coords);
+                        },
+                        (err) => {
+                            console.error("GPS 위치 권한 에러:", err);
+                        }
+                    );
+                } else {
+                    console.error("이 브라우저는 위치 정보를 지원하지 않습니다.");
+                }
+            };
         </script>
     </head>
 
@@ -36,15 +53,20 @@
                     src="./assets/assest2.glb"
                 ></a-asset-item>
             </a-assets>
-<!--                     look-at="[gps-camera]" -->
-                <a-entity
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    scale="1 1 1"
-                    gps-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"
-                ></a-entity>
 
-            <a-camera gps-camera rotation-reader></a-camera>
+            <!-- ✅ 지정한 GPS 좌표에 오브젝트 배치 -->
+            <a-entity
+                animation-mixer="loop: repeat"
+                gltf-model="#animated-asset"
+                scale="1 1 1"
+                gps-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"
+            ></a-entity>
+
+            <!-- ✅ gps-camera에 정확도 설정 -->
+            <a-camera gps-camera rotation-reader
+                      gps-min-distance="1"
+                      gps-fix-threshold="0.5">
+            </a-camera>
         </a-scene>
     </body>
 </html>
