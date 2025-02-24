@@ -8,6 +8,19 @@
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+        <script>
+            // degToRad 수동 정의 (필요시)
+            if (typeof THREE === 'undefined') {
+                console.error("THREE.js is not loaded");
+            } else if (!THREE.MathUtils || !THREE.MathUtils.degToRad) {
+                THREE.MathUtils = {
+                    degToRad: function (degrees) {
+                        return degrees * (Math.PI / 180);
+                    }
+                };
+                console.log("degToRad manually defined");
+            }
+        </script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
