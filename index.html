@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
@@ -41,7 +41,7 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
-        <a-scene
+<!--         <a-scene
             renderer="logarithmicDepthBuffer: true;"
             embedded
             loading-screen="enabled: false;"
@@ -68,8 +68,15 @@
                       gps-fix-threshold="0.5">
             </a-camera> -->
 
-            <a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
-            <a-box material="color: yellow" gps-new-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"/>
+<!--             <a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
+            <a-box material="color: yellow" gps-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"/>
+        </a-scene> --> -->
+        <a-scene 
+            vr-mode-ui='enabled: false' 
+            embedded
+            arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+            <a-camera gps-camera rotation-reader></a-camera>
+            <a-box material="color: yellow" gps-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"/>
         </a-scene>
     </body>
 </html>
