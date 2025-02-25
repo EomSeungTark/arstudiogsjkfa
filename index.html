@@ -55,13 +55,13 @@
             </a-assets>
 
             <!-- ✅ 지정한 GPS 좌표에 오브젝트 배치 -->
-            <a-entity
+<!--             <a-entity
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
                 scale="1 1 1"
                 gps-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"
             ></a-entity>
-
+ -->
             <!-- ✅ gps-camera에 정확도 설정 -->
 <!--             <a-camera gps-camera rotation-reader
                       gps-min-distance="1"
@@ -69,6 +69,7 @@
             </a-camera> -->
 
             <a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
+            <a-box material="color: yellow" gps-new-entity-place="latitude: 37.51212319043115; longitude: 127.0223477990558;"/>
         </a-scene>
     </body>
 </html>
