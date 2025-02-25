@@ -63,10 +63,12 @@
             ></a-entity>
 
             <!-- ✅ gps-camera에 정확도 설정 -->
-            <a-camera gps-camera rotation-reader
+<!--             <a-camera gps-camera rotation-reader
                       gps-min-distance="1"
                       gps-fix-threshold="0.5">
-            </a-camera>
+            </a-camera> -->
+
+            <a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
         </a-scene>
     </body>
 </html>
