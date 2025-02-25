@@ -1,7 +1,24 @@
+window.onload = () => {
+    let places = staticLoadPlaces();
+    renderPlaces(places);
+};
+
+function staticLoadPlaces() {
+    return [
+        {
+            name: 'Pokèmon',
+            location: {
+                // lat: <your-latitude>,
+                // lng: <your-longitude>,
+            },
+        },
+    ];
+}
+
 var models = [
   {
     url: './assets/assest2.glb',
-    scale: '0.5 0.5 0.5',
+    scale: '0.1 0.1 0.1',
     rotation: '0 180 0',
   }
 ];
