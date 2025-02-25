@@ -10,6 +10,8 @@ function staticLoadPlaces() {
             location: {
                 // lat: <your-latitude>,
                 // lng: <your-longitude>,
+                lat: 37.51212319043115,
+                lng: 127.0223477990558,
             },
         },
     ];
